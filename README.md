@@ -16,4 +16,5 @@ sudo python3 main.py
 1. Add Configuration.. 클릭 후 + 누르고 Python으로 선택 (https://csy7792.tistory.com/101 참고)
 2. Script path에서 폴더의 main.py 선택 후 OK
 
-12:53 push test
+## 참고
+- Pycharm Git 연동 https://hoohaha.tistory.com/38
