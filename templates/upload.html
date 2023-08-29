@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Upload</title>
-    </head>
-    <body>
-        <form action="http://localhost/upload.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="file_upload_test">
-            <input type="submit">
-        </form>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="upload.css" type="text/css">
+    <script src="upload.js"></script>
+    <title>Upload</title>
+</head>
+<body>
+    <div id="root">
+        <h2 class="title">File Upload</h2>
+        <hr>
+        <div class="contents">
+            <div class="upload-box">
+                <div id="drop-file" class="drag-file">
+                    <img src="https://img.icons8.com/2x/csv" alt="파일 아이콘" class="image">
+                    <p class="message">Drag files to upload</p>
+                </div>
+                <label class="file-label" for="chooseFile">Choose File</label>
+                <input class="file" id="chooseFile" type="file" multiple onchange="dropFile.handleFiles(this.files)">
+            </div>
+            <div id="files" class="files">
+                <div class="file">
+                    <div class="thumbnail">
+                        <img src="https://img.icons8.com/2x/csv" alt="파일타입 이미지" class="image">
+                    </div>
+                    <div class="details">
+                        <header class="header">
+                            <span class="name">Photo.png</span>
+                            <span class="size">7.5 mb</span>
+                        </header>
+                        <div class="progress">
+                            <div class="bar"></div>
+                        </div>
+                        <div class="status">
+                            <span class="percent">37% done</span>
+                            <span class="speed">90KB/sec</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
