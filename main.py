@@ -4,14 +4,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return render_template('index.html')
-
+    return render_template('upload.html')
 
 @app.route('/upload',methods=['GET','POST'])
 def upload():
     if request.method == 'POST':
         f = request.files['file']
-        f.save("./uploads/" + secure_filename(f.filename))
+        f.save("./static/uploads/" + secure_filename(f.filename))
         return render_template('/home.html')
     else:
         return render_template('/upload.html')
