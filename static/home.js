@@ -37,6 +37,7 @@ const getChatResponse = async (incomingChatDiv) => {
     const API_URL = "https://api.openai.com/v1/chat/completions";
     const pElement = document.createElement("p");
 
+    // ChatGPT API 역할, 질의문
     // Define the properties and data for the API request
     const requestOptions = {
         method: "POST",
