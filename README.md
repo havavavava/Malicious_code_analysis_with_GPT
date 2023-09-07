@@ -18,3 +18,7 @@ sudo python3 main.py
 
 ## 참고
 - Pycharm Git 연동 https://hoohaha.tistory.com/38
+
+
+## AI 코랩 주소
+https://colab.research.google.com/drive/1WfcoX8FClY5ECWC25ke8T7dc6PDvf_lL#scrollTo=u4wvDYENhwKN
