@@ -28,6 +28,7 @@ def excel_to_csv(f):
     workbook.save("./static/uploads/" + secure_filename(f.filename), SaveFormat.CSV)
 '''
 
+'''
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
@@ -35,6 +36,7 @@ def upload():
         f.save("./static/uploads/" + secure_filename(f.filename))
         #return render_template('home.html')
     return render_template('upload.html')
+'''
 
 @app.route('/home')
 def home():
@@ -43,19 +45,25 @@ def home():
 
 @app.route('/model', methods=['GET','POST'])
 def model():
-    # 업로드된 파일을 데이터프레임으로 읽어옵니다.
-    #send_from_dictory('./static/uploads',secure_filename(f.filename))
-    f = request.files['file']
-    file_path = "./static/uploads/" + secure_filename(f.filename)
-    df = pd.read_csv(file_path)
+    if request.method == 'POST':
+        f = request.files['file']
+        f.save("./static/uploads/" + secure_filename(f.filename))
+        #return render_template('home.html')
+        # 업로드된 파일을 데이터프레임으로 읽어옵니다.
+        # send_from_dictory('./static/uploads',secure_filename(f.filename))
 
-    # 데이터프레임을 이용하여 예측 등 원하는 작업 수행
-    X = df.loc[:, 'API/DLL_0':'ENTRY_49']
-    predicted_label = clf.predict(X)
+        file_path = "static/uploads/" + secure_filename(f.filename)
+        df = pd.read_csv(file_path)
+        # 데이터프레임을 이용하여 예측 등 원하는 작업 수행
+        X = df.loc[:, 'API/DLL_0':'ENTRY_49']
+        predicted_label = clf.predict(X)
 
-    # JSON 형식으로 응답을 생성하여 반환
-    response_data = {"predicted_label": predicted_label.tolist()}
-    return jsonify(response_data), 200
+        # JSON 형식으로 응답을 생성하여 반환
+        response_data = {"predicted_label": predicted_label.tolist()}
+        # home.html로 predicted=예측값 쿼리로 넘김
+        return redirect(url_for('home', predicted=predicted_label.tolist()))
+    return render_template('upload.html')
+    #jsonify(response_data), 200
 
 
 
