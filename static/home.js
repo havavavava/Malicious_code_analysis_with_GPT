@@ -47,7 +47,10 @@ const getChatResponse = async (incomingChatDiv) => {
         },
         body: JSON.stringify({
             "model": "gpt-3.5-turbo",
-            "messages": [{"role": "user", "content": userText}],
+            "messages": [
+                {"role":"system", "content": "You are a Malicious Code Analyst."},
+                {"role": "user", "content": userText}
+            ],
             "temperature": 0.7,
         })
     }
