@@ -33,6 +33,10 @@ const createChatElement = (content, className) => {
     return chatDiv; // Return the created chat div
 }
 
+function searchPram(key){
+    return new URLSearchParms(location.search).get(key);
+};
+
 const getChatResponse = async (incomingChatDiv) => {
     const API_URL = "https://api.openai.com/v1/chat/completions";
     const pElement = document.createElement("p");
@@ -49,7 +53,7 @@ const getChatResponse = async (incomingChatDiv) => {
             "model": "gpt-3.5-turbo",
             "messages": [
                 {"role":"system", "content": "You are a Malicious Code Analyst."},
-                {"role": "user", "content": userText}
+                {"role": "user", "content": userText }
             ],
             "temperature": 0.7,
         })
