@@ -4,10 +4,18 @@ const chatContainer = document.querySelector(".chat-container");
 const themeButton = document.querySelector("#theme-btn");
 const deleteButton = document.querySelector("#delete-btn");
 
+
 let userText = null;
 let backupText = null;
 let lastText = null;
-const API_KEY = "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"; // Paste your API key here
+const API_KEY = "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"; // Paste your API key here
+//
+
+function searchPrams(key){
+    return new URLSearchParams(location.search).get(key);
+};
+
+const predictedValue = searchPrams('predicted');
 
 const loadDataFromLocalstorage = () => {
     // Load saved chats and theme from local storage and apply/add on the page
@@ -16,9 +24,11 @@ const loadDataFromLocalstorage = () => {
     document.body.classList.toggle("light-mode", themeColor === "light_mode");
     themeButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
 
+    // 초기화면
     const defaultText = `<div class="default-text">
                             <h1>ChatGPT + Malicious code</h1>
                             <p>Malicious code description with ChatGPT</p>
+                            <p>${predictedValue}</p>
                         </div>`
 
     chatContainer.innerHTML = localStorage.getItem("all-chats") || defaultText;
@@ -33,13 +43,10 @@ const createChatElement = (content, className) => {
     return chatDiv; // Return the created chat div
 }
 
-function searchPram(key){
-    return new URLSearchParms(location.search).get(key);
-};
-
 const getChatResponse = async (incomingChatDiv) => {
     const API_URL = "https://api.openai.com/v1/chat/completions";
     const pElement = document.createElement("p");
+
 
     // ChatGPT API 역할, 질의문
     // Define the properties and data for the API request
@@ -53,7 +60,7 @@ const getChatResponse = async (incomingChatDiv) => {
             "model": "gpt-3.5-turbo",
             "messages": [
                 {"role":"system", "content": "You are a Malicious Code Analyst."},
-                {"role": "user", "content": userText }
+                {"role": "user", "content": userText  }
             ],
             "temperature": 0.7,
         })
@@ -106,7 +113,7 @@ const showTypingAnimation = () => {
 const handleOutgoingChat = () => {
     backupText = chatInput.value.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/gi, ''); // Get chatInput value and remove extra spaces
 
-    if(!backupText || backupText == lastText) 
+    if(!backupText || backupText == lastText)
     {
         chatInput.value = "";
         chatInput.style.height = `${initialInputHeight}px`;
