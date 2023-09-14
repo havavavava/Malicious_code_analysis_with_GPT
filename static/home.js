@@ -181,7 +181,7 @@ loadDataFromLocalstorage();
 sendButton.addEventListener("click", handleOutgoingChat);
 
 async function GptStart() {
-    chatInput.value = predictedValue + "에 대해서 알려줘";
+    chatInput.value = predictedValue + "악성코드에 대해서 알려줘";
     sendButton.click();
 
     await delay(5000);
