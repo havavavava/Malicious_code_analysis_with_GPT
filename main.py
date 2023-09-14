@@ -3,12 +3,10 @@ from werkzeug.utils import secure_filename
 import joblib   # joblib를 추가합니다.
 import pandas as pd  # pandas를 추가합니다.
 import sklearn
-from aspose.cells import Workbook, SaveFormat
+#from aspose.cells import Workbook, SaveFormat
 import requests
 
 app = Flask(__name__)
-
-
 
 
 # csv 파일 분석 후 PE 헤더 정보 출력 및 그래프로 나타내기

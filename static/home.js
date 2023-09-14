@@ -8,7 +8,7 @@ const deleteButton = document.querySelector("#delete-btn");
 let userText = null;
 let backupText = null;
 let lastText = null;
-const API_KEY = ""; // Paste your API key here
+const API_KEY = "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"; // Paste your API key here
 //
 
 function searchPrams(key){
@@ -16,6 +16,7 @@ function searchPrams(key){
 };
 
 const predictedValue = searchPrams('predicted');
+
 
 const loadDataFromLocalstorage = () => {
     // Load saved chats and theme from local storage and apply/add on the page
@@ -172,5 +173,24 @@ chatInput.addEventListener("keydown", (e) => {
     }
 });
 
+function delay(ms = 1000) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 loadDataFromLocalstorage();
 sendButton.addEventListener("click", handleOutgoingChat);
+
+async function GptStart() {
+    chatInput.value = predictedValue + "에 대해서 알려줘";
+    sendButton.click();
+
+    await delay(5000);
+    chatInput.value = predictedValue + "의 해결 방법에 대해서 알려줘";
+    sendButton.click();
+
+    await delay(5000);
+    chatInput.value = predictedValue + "의 대표적인 악성코드나 CVE번호를 알려줘";
+    sendButton.click();
+}
+GptStart();
+
