@@ -184,11 +184,11 @@ async function GptStart() {
     chatInput.value = predictedValue + "악성코드에 대해서 알려줘";
     sendButton.click();
 
-    await delay(5000);
+    await delay(2000);
     chatInput.value = predictedValue + "의 해결 방법에 대해서 알려줘";
     sendButton.click();
 
-    await delay(5000);
+    await delay(2000);
     chatInput.value = predictedValue + "의 대표적인 악성코드나 CVE번호 알려줘";
     sendButton.click();
 }
