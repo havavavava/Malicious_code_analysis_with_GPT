@@ -10,6 +10,11 @@ AWS EC2 터미널 내에서 해당 폴더로 이동 후 실행
 ```python
 sudo python3 main.py
 ```
+requirements.txt로 한번에 패키지 다운로드 
+```python
+pip install -r requirements.txt
+```
+
 
 ## 오류
 - Pycharm IDE에서 실행 버튼 활성화 안될 시
