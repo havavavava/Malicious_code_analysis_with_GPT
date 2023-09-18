@@ -1,15 +1,20 @@
 # Malicious_code_analysis_with_GPT
 
 ## AWS EC2 클라우드 서비스 접속
-
+1. pageant.exe에 키페어 파일 올리기
+2. Putty HostName에 퍼블릭 DNS 입력(Port:22)
+3. login as : ec2-user
+4. AWS EC2 터미널 내에서 해당 폴더로 이동 후 실행
+```python
+sudo python3 main.py
+```
+5. 주소창에 퍼블릭 DNS로 접속
+   
 ## GitHub에서 코드 내려받기
 ```python
 git clone https://github.com/havavavava/Malicious_code_analysis_with_GPT
 ```
-AWS EC2 터미널 내에서 해당 폴더로 이동 후 실행
-```python
-sudo python3 main.py
-```
+
 requirements.txt로 한번에 패키지 다운로드 
 ```python
 pip install -r requirements.txt
