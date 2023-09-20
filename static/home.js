@@ -8,7 +8,7 @@ const deleteButton = document.querySelector("#delete-btn");
 let userText = null;
 let backupText = null;
 let lastText = null;
-const API_KEY = "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"; // Paste your API key here
+const API_KEY = ""; // Paste your API key here
 //
 
 function searchPrams(key){
