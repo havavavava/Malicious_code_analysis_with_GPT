@@ -45,10 +45,8 @@ def home():
 def model():
     if request.method == 'POST':
         f = request.files['file']
+        # 파일 저장
         f.save("./static/uploads/" + secure_filename(f.filename))
-        #return render_template('home.html')
-        # 업로드된 파일을 데이터프레임으로 읽어옵니다.
-        # send_from_dictory('./static/uploads',secure_filename(f.filename))
 
         file_path = "static/uploads/" + secure_filename(f.filename)
         df = pd.read_csv(file_path)
@@ -57,7 +55,8 @@ def model():
         predicted_label = clf.predict(X)
 
         # JSON 형식으로 응답을 생성하여 반환
-        response_data = {"predicted_label": predicted_label.tolist()}
+        # response_data = {"predicted_label": predicted_label.tolist()}
+
         # home.html로 predicted=예측값 쿼리로 넘김
         return redirect(url_for('home', predicted=predicted_label.tolist()))
     return render_template('upload.html')
