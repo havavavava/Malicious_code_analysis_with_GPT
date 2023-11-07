@@ -58,7 +58,10 @@ def model():
         # response_data = {"predicted_label": predicted_label.tolist()}
 
         # home.html로 predicted=예측값 쿼리로 넘김
-        return redirect(url_for('home', predicted=predicted_label.tolist()))
+        if predicted_label.tolist() == 'normal':
+            return render_template('templates/normal.html')
+        else:
+            return redirect(url_for('home', predicted=predicted_label.tolist()))
     return render_template('upload.html')
     #jsonify(response_data), 200
 

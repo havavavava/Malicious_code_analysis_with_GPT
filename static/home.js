@@ -181,15 +181,17 @@ loadDataFromLocalstorage();
 sendButton.addEventListener("click", handleOutgoingChat);
 
 async function GptStart() {
-    chatInput.value = predictedValue + "악성코드에 대해서 알려줘";
+    chatInput.value = "Tell me about " + predictedValue +" malware";
+    sendButton.click();
+
+
+
+    await delay(2000);
+    chatInput.value = "Tell me how to solve "+ predictedValue +" malware";
     sendButton.click();
 
     await delay(2000);
-    chatInput.value = predictedValue + "의 해결 방법에 대해서 알려줘";
-    sendButton.click();
-
-    await delay(2000);
-    chatInput.value = predictedValue + "의 대표적인 악성코드나 CVE번호 알려줘";
+    chatInput.value = "Tell me the representative malicious code or CVE number of "+ predictedValue +"malicious codes";
     sendButton.click();
 }
 GptStart();
